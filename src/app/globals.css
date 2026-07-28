@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+:root {
+  --color-noir: #171310;
+  --color-noir-soft: #211c17;
+  --color-noir-deep: #100d0b;
+  --color-bone: #ece5d8;
+  --color-bone-dim: #a89d8c;
+  --color-parchment: #e7dfd0;
+  --color-ink: #1a1611;
+  --color-ink-soft: #6f665a;
+  --color-bronze: #b08d57;
+  --color-bronze-bright: #c9a876;
+  --color-line-dark: rgba(236, 229, 216, 0.14);
+  --color-line-light: rgba(26, 22, 17, 0.16);
+}
+
+@theme inline {
+  --color-noir: var(--color-noir);
+  --color-noir-soft: var(--color-noir-soft);
+  --color-noir-deep: var(--color-noir-deep);
+  --color-bone: var(--color-bone);
+  --color-bone-dim: var(--color-bone-dim);
+  --color-parchment: var(--color-parchment);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-bronze: var(--color-bronze);
+  --color-bronze-bright: var(--color-bronze-bright);
+  --color-line-dark: var(--color-line-dark);
+  --color-line-light: var(--color-line-light);
+
+  --font-display: var(--font-cormorant);
+  --font-body: var(--font-jost);
+}
+
+body {
+  background: var(--color-noir);
+  color: var(--color-bone);
+  font-family: var(--font-body);
+}
+
+::selection {
+  background: var(--color-bronze);
+  color: var(--color-noir);
+}
+
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 42s linear infinite;
+}
+
+@keyframes cue-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+.animate-cue-bob {
+  animation: cue-bob 1.8s ease-in-out infinite;
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-menu-in {
+  animation: menu-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-cue-bob,
+  .animate-menu-in {
+    animation: none;
+  }
+}
